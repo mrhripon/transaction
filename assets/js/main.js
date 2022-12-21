@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
           dropdownParent.querySelector(".el-accordion__content");
         if (dropContent === undefined || dropContent === null) return;
         if (dropContent.style.maxHeight) {
-          document.querySelectorAll('.el-accordion__content').forEach(each => each.style.maxHeight = null)
           dropContent.style.maxHeight = null;
         } else {
           dropContent.style.maxHeight = `${dropContent.scrollHeight}px`;
