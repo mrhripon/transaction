@@ -33841,7 +33841,8 @@ textarea::-moz-placeholder {
   margin-bottom: 10px;
 }
 
-.input-inside {
+.input-inside,
+.selection-wrap {
   margin-bottom: 22px;
 }
 
@@ -33881,8 +33882,9 @@ textarea::-moz-placeholder {
 }
 
 .type-2 .access-form {
-  max-width: 960px;
+  max-width: 940px;
   background: transparent;
+  padding: 0;
 }
 
 .twin-field {
@@ -33899,6 +33901,11 @@ textarea.input-design {
   height: 196px !important;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.btn--header.login-btn.send-btn {
+  height: 65px;
+  border-radius: 4px;
 }
 
 @media only screen and (max-width: 1024px) {

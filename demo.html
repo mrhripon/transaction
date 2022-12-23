@@ -8,6 +8,10 @@
   <title>Blockchain Analytics for Crypto Compliance</title>
   <!-- Favicon Icon -->
   <link rel="shortcut icon" href="assets/img/fav.ico" type="image/png" />
+
+  <!-- Plugin Css  -->
+  <link rel="stylesheet" href="assets/css/bvselect.css">
+
   <!-- Main Style Sheet -->
   <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 </head>
@@ -129,6 +133,9 @@
                 <div class="selection-wrap">
                   <select name="hobby" id="hobby">
                     <option value="">What you are interested in?</option>
+                    <option value="">What you are interested in 1</option>
+                    <option value="">What you are interested in? 2</option>
+                    <option value="">What you are interested in? 3</option>
                   </select>
                 </div>
 
@@ -136,10 +143,10 @@
                   <div class="selection-wrap">
                     <select name="country" id="country">
                       <option value="">United State</option>
-                      <option value="">United State</option>
-                      <option value="">United State</option>
-                      <option value="">United State</option>
-                      <option value="">United State</option>
+                      <option value="">Bangladesh</option>
+                      <option value="">India</option>
+                      <option value="">Nepal</option>
+                      <option value="">Portugal</option>
                     </select>
                   </div>
 
@@ -269,6 +276,17 @@
       </footer>
     </div>
     <!-- All Js Here  -->
+    <!-- Plugin Js  -->
+    <script type="text/javascript" src="assets/js/bvselect.js"></script>
+    <script>
+      let hobbySelector = new BVSelect({
+        selector: '#hobby',
+      })
+
+      let countrySelector = new BVSelect({
+        selector: '#country'
+      })
+    </script>
     <script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 
