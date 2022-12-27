@@ -324,12 +324,13 @@
 							<div class="g-row g-row--space_none g-row--justify_center ma--bottom_2xl-md ma--bottom_lg">
 								<div
 									class="g-container g-container--fit_md g-container--space_xl-md g-container--space_md-till-md pa--vertical_xl-md g--display_flex g-row--appearance_row g-row--align_start">
-									<div class="btn_toggle_switcher__row">
-										<button data-toggle-id="1"
+									<div class="btn_toggle_switcher__row" id="mechanism_step">
+										<button data-step="step_1"
 											class="btn_toggle_switcher el-caption--weight_bold el-caption--height_md el-caption--size_3md pa--horizont_xs active">Part
 											1: Identity
+
 										</button>
-										<button data-toggle-id="2"
+										<button data-step="step_2"
 											class="btn_toggle_switcher el-caption--weight_bold el-caption--height_md el-caption--size_3md pa--horizont_xs">Part
 											2: Blockchain
 										</button>
@@ -337,7 +338,7 @@
 								</div>
 							</div>
 							<div class="g-row g-row--space_none">
-								<div data-toggle-id="1"
+								<div data-step-content id="step_1"
 									class="g-container g-container--fit_md g-container--space_xl-md g-container--space_md-till-md btn_toggle_switcher__container active">
 									<div
 										class="g-row g-row--appearance_row g-row--space_none g-row--justify_center pa--vertical_xl-md">
@@ -380,7 +381,7 @@
 
 									</div>
 								</div>
-								<div data-toggle-id="2"
+								<div data-step-content id="step_2"
 									class="g-container g-container--fit_md g-container--space_xl-md g-container--space_md-till-md btn_toggle_switcher__container">
 									<div
 										class="g-row g-row--appearance_row g-row--space_none g-row--justify_center pa--vertical_xl-md">
@@ -428,11 +429,6 @@
 								</div>
 
 							</div>
-							<!--
-<div class="g-row g-row--space_none g-row--justify_center">
-		<a aria-label="Learn more" target="_self" rel="noopener" href="https://crystalblockchain.com/get-crystal/" class="btn_yell el-caption--weight_bold el-caption--size_1md">GET CERTIFICATE</a>
-	</div>-->
-
 							<div class="g-cell g-cols g-cols--12 g-cols--5-md g-cols--4-xl g-cols--6-mac"
 								style="margin:auto; padding-top: 20px;">
 								<a aria-label="Link Name" target="_self" rel="noopener" href="certify/login.html"
@@ -735,13 +731,6 @@
 
 				</div>
 			</div>
-
-
-
-
-
-
-
 			<div class="ds-section" style="background:#ebecf0;padding-bottom:30px">
 				<div
 					class="g-container g-container--fit_auto-sm g-container--fit_md-md g-container--fit_lg-lg g-container--fit_xl-xl rel">
@@ -782,16 +771,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
-
-
-
-
-
-
 
 			<footer class="footer"><img class="img img--footer" src="assets/img/Mask-Group.jpg" alt="" title="">
 				<div

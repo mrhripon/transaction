@@ -6,7 +6,6 @@ https://github.com/BMSVieira/BVSelect-VanillaJS
 Made by: Bruno Vieira
 
 --------------------------- */
-
 class BVSelect {
 
     constructor({
@@ -18,8 +17,7 @@ class BVSelect {
         search_placeholder = "Search...",
         placeholder = "Select Option",
         breakpoint = "600"
-    }) 
-    {
+    }) {
 
         // Random Number generated
         var randomID = Math.floor(Math.random() * (9999 - 0 + 1)) + 0;
@@ -45,7 +43,7 @@ class BVSelect {
         document.getElementById(this.selector).style.display = "none";
 
         // ** ADD OPTIONS TO LIST ** 
-        this.SetupListOptions = function() {
+        this.SetupListOptions = function () {
             // Get All options inside Selectbox
             var x = document.getElementById(this.selector);
             for (var i = 0; i < x.length; i++) {
@@ -90,13 +88,19 @@ class BVSelect {
                     const index = Array.from(item.parentNode.children).indexOf((item))
                     var selected_option = document.getElementById(this.selector);
 
+                    // Modification somewhat
+                    if (document.getElementById('selected-icon') !== null && item.querySelector('img') !== null) {
+                        document.getElementById('selected-icon').innerHTML = `<img class="selected_icon" src="${item.querySelector('img').src}" alt="">`;
+
+                        item.closest('.selection-wrap').classList.add('active');
+                    }
                     if (this.searchbox == true) {
                         var numberless = -1;
                     } else {
                         var numberless = "";
                     }
 
-                    if (item.classList.contains("bv_disabled") || item.classList.contains("nofocus") || item.classList.contains("bv_separator")) {} else {
+                    if (item.classList.contains("bv_disabled") || item.classList.contains("nofocus") || item.classList.contains("bv_separator")) { } else {
                         if (selected_option.attributes.multiple) {
                             var SelectedNames = "";
                             event.preventDefault();
@@ -142,17 +146,17 @@ class BVSelect {
 
                             // Remove class so Body has Scroll Again
                             document.body.classList.remove("stop-scrolling");
-                            if(document.body.contains(document.getElementById('deletebg'))){
-                                   document.getElementById("deletebg").remove();
+                            if (document.body.contains(document.getElementById('deletebg'))) {
+                                document.getElementById("deletebg").remove();
                             }
 
-                              FixVerticalViewPort();
+                            FixVerticalViewPort();
                         }
 
                         // When click, resets search filter
                         if (this.searchbox == true) {
                             document.getElementById("input_" + randomID).value = "";
-                            Array.from(document.querySelectorAll("#ul_" + randomID + " li")).forEach(function(val) {
+                            Array.from(document.querySelectorAll("#ul_" + randomID + " li")).forEach(function (val) {
                                 val.style.display = "block";
                             });
                         }
@@ -162,7 +166,7 @@ class BVSelect {
         }
 
         // ** CREATE MAIN **
-        this.CriarDivBase = function() {
+        this.CriarDivBase = function () {
 
             document.getElementById(this.selector).insertAdjacentHTML('afterend', '<div id="bv_' + randomID + '" data-search="' + this.searchbox + '" class="bv_mainselect"></div>');
             document.getElementById("bv_" + randomID).insertAdjacentHTML('afterbegin', '<div id="main_' + randomID + '" style="width:' + this.width + ';" class="bv_atual bv_background"></div><ul id="ul_' + randomID + '" class="bv_ul_inner bv_background"></ul>');
@@ -180,6 +184,7 @@ class BVSelect {
 
             // Get Selected Option
             var selected_option = document.getElementById(this.selector);
+
             if (!selected_option.attributes.multiple) {
                 // Check if exists any selected option in the native selectbox
                 for (var i = 0; i < selected_option.length; i++) {
@@ -203,21 +208,20 @@ class BVSelect {
             document.getElementById("main_" + randomID).innerHTML = first_option_text + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>";
 
             // Add event Listener on click main div
-            document.getElementById("main_" + randomID).addEventListener("click", function() {
+            document.getElementById("main_" + randomID).addEventListener("click", function () {
 
                 // Reset dropdown position, in case it was changed before
                 document.getElementById("ul_" + randomID).style.position = "absolute";
                 document.getElementById("ul_" + randomID).style.bottom = "";
 
                 // Check Windows Width for Mobile
-                if(window.innerWidth < breakpoint)
-                {
-                      document.getElementById("ul_" + randomID).classList.add("bv_ul_mobile");
-                      document.getElementById(MDivSelector).insertAdjacentHTML('afterend', '<div id="deletebg" class="bv_ul_bg"></div>');
-                      document.body.classList.add("stop-scrolling");
-                      
+                if (window.innerWidth < breakpoint) {
+                    document.getElementById("ul_" + randomID).classList.add("bv_ul_mobile");
+                    document.getElementById(MDivSelector).insertAdjacentHTML('afterend', '<div id="deletebg" class="bv_ul_bg"></div>');
+                    document.body.classList.add("stop-scrolling");
+
                 } else {
-                     document.getElementById("ul_" + randomID).classList.remove("bv_ul_mobile");
+                    document.getElementById("ul_" + randomID).classList.remove("bv_ul_mobile");
                 }
 
                 // Correct the width of the UL when window is resized
@@ -228,7 +232,7 @@ class BVSelect {
 
                     document.getElementById('ul_' + randomID).style.display = 'none';
                     Array.from(document.querySelectorAll(".arrows_bv"))
-                        .forEach(function(val) {
+                        .forEach(function (val) {
                             val.classList.remove("up");
                             val.classList.add("down");
                         });
@@ -236,12 +240,12 @@ class BVSelect {
                 } else {
 
                     Array.from(document.querySelectorAll(".bv_ul_inner"))
-                        .forEach(function(val) {
+                        .forEach(function (val) {
                             val.style.display = 'none';
                         });
                     BVfadeIn(document.getElementById('ul_' + randomID));
                     Array.from(document.querySelectorAll(".arrows_bv"))
-                        .forEach(function(val) {
+                        .forEach(function (val) {
                             val.classList.remove("up");
                             val.classList.add("down");
                         });
@@ -253,9 +257,9 @@ class BVSelect {
                 if (offset == true) { FixVerticalViewPort(); }
 
                 // Check if autofocus and search is enabled
-                if(search_autofocus == true && searchbox == true) { document.getElementById("input_" + randomID).focus();}
-            
-               
+                if (search_autofocus == true && searchbox == true) { document.getElementById("input_" + randomID).focus(); }
+
+
             }, false);
 
             // ** SETUP LIST OPTIONS **
@@ -266,7 +270,7 @@ class BVSelect {
         this.CriarDivBase();
 
         // ** ON SCROLL EVENT TO PREVENT OUT OF VIEWPORT **
-        document.addEventListener("scroll", function() {
+        document.addEventListener("scroll", function () {
             if (selectedIDFocus != 0) {
 
                 var currentWindowViewOffSet = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
@@ -332,7 +336,7 @@ class BVSelect {
 
         // ** SEARCH BAR **
         if (this.searchbox == true) {
-            document.getElementById("input_" + randomID).addEventListener("keyup", function() {
+            document.getElementById("input_" + randomID).addEventListener("keyup", function () {
                 var input, filter, ul, li, i, txtValue;
                 input = document.getElementById("input_" + randomID);
                 filter = input.value.toUpperCase();
@@ -340,7 +344,7 @@ class BVSelect {
                 li = ul.getElementsByTagName("li");
 
                 // Hides all separators
-                Array.from(document.querySelectorAll(".bv_separator")).forEach(function(val) {
+                Array.from(document.querySelectorAll(".bv_separator")).forEach(function (val) {
                     val.style.display = "none";
                 });
 
@@ -348,7 +352,7 @@ class BVSelect {
 
                     // If Empty, appears every line
                     if (filter == "") {
-                        Array.from(document.querySelectorAll("#ul_" + randomID + " li")).forEach(function(val) {
+                        Array.from(document.querySelectorAll("#ul_" + randomID + " li")).forEach(function (val) {
                             val.style.display = "block";
                         });
                     } else {
@@ -366,33 +370,33 @@ class BVSelect {
             }, false);
         }
         // ** CLICK OUTSIDE **
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             if (!e.target.closest(".bv_ul_inner") || !event.target.classList.contains('bv_input')) {
                 if (!event.target.classList.contains('bv_input') && !event.target.classList.contains('bv_atual')) {
 
                     if (event.target.nodeName != "LI") {
                         Array.from(document.querySelectorAll(".bv_ul_inner"))
-                            .forEach(function(val) {
+                            .forEach(function (val) {
                                 val.style.display = 'none';
                             });
                         Array.from(document.querySelectorAll(".arrows_bv"))
-                            .forEach(function(val) {
+                            .forEach(function (val) {
                                 val.classList.remove("up");
                                 val.classList.add("down");
                             });
 
                         // When click outside, resets search filter
-                        Array.from(document.querySelectorAll("#input_" + randomID)).forEach(function(val) {
+                        Array.from(document.querySelectorAll("#input_" + randomID)).forEach(function (val) {
                             val.value = "";
                         });
-                        Array.from(document.querySelectorAll("#ul_" + randomID + " li")).forEach(function(val) {
+                        Array.from(document.querySelectorAll("#ul_" + randomID + " li")).forEach(function (val) {
                             val.style.display = "block";
                         });
 
                         // Remove class so Body has Scroll Again
                         document.body.classList.remove("stop-scrolling");
-                        if(document.body.contains(document.getElementById('deletebg'))){
-                               document.getElementById("deletebg").remove();
+                        if (document.body.contains(document.getElementById('deletebg'))) {
+                            document.getElementById("deletebg").remove();
                         }
 
                         if (document.getElementById("ul_" + randomID)) // Checks if element existed in case it was destroyed
@@ -418,7 +422,7 @@ class BVSelect {
     Update() {
         // Removes all Li that does not contain class "nofocus" - Its the search. 
         Array.from(document.querySelectorAll("#ul_" + this.randomID + " li"))
-            .forEach(function(val) {
+            .forEach(function (val) {
                 if (!val.classList.contains("nofocus")) {
                     val.remove();
                 }
@@ -433,34 +437,31 @@ class BVSelect {
     // CHANGE
     Change(properties) {
 
-        if(properties.placeholder)
-        {
+        if (properties.placeholder) {
             document.getElementById("main_" + this.randomID).innerHTML = properties.placeholder + "<i id='arrow_" + this.randomID + "' class='arrows_bv arrow down'></i>";
-        } 
-        if(properties.search_placeholder)
-        {
+        }
+        if (properties.search_placeholder) {
             document.getElementById("input_" + this.randomID).placeholder = properties.search_placeholder;
-        } 
-        if(properties.options && typeof(properties.options) === 'object')
-        {
+        }
+        if (properties.options && typeof (properties.options) === 'object') {
             // Clean every option inside the original selector
-            document.querySelector("#"+this.selector).innerHTML = "";
-             // Loop object and add new options to original select box
+            document.querySelector("#" + this.selector).innerHTML = "";
+            // Loop object and add new options to original select box
             var prop = Object.keys(properties.options).length;
             for (var i = 0; i < prop; i++) {
 
                 var change_disabled, change_separator, change_img, change_icon;
 
-                if(properties.options[i].disabled == true){ change_disabled = "disabled"; } else { change_disabled = ""; }
-                if(properties.options[i].separator == true){ change_separator = "data-separator='true'"; } else { change_separator = ""; }
-                if(properties.options[i].img){ change_img = "data-img='"+properties.options[i].img+"'"; } else { change_img = ""; }
-                if(properties.options[i].icon){ change_icon = "data-icon='"+properties.options[i].icon+"'"; } else { change_icon = ""; }
+                if (properties.options[i].disabled == true) { change_disabled = "disabled"; } else { change_disabled = ""; }
+                if (properties.options[i].separator == true) { change_separator = "data-separator='true'"; } else { change_separator = ""; }
+                if (properties.options[i].img) { change_img = "data-img='" + properties.options[i].img + "'"; } else { change_img = ""; }
+                if (properties.options[i].icon) { change_icon = "data-icon='" + properties.options[i].icon + "'"; } else { change_icon = ""; }
 
-                document.getElementById(this.selector).insertAdjacentHTML('beforeend', "<option "+change_img+" "+change_icon+" "+change_separator+" "+change_disabled+" value="+properties.options[i].value+" >"+properties.options[i].inner_text+"</option>");
+                document.getElementById(this.selector).insertAdjacentHTML('beforeend', "<option " + change_img + " " + change_icon + " " + change_separator + " " + change_disabled + " value=" + properties.options[i].value + " >" + properties.options[i].inner_text + "</option>");
             }
 
         } else {
-            console.error("Options must be and Object. Read documentation."); 
+            console.error("Options must be and Object. Read documentation.");
         }
     }
     // Set option
@@ -469,57 +470,53 @@ class BVSelect {
         var selectorIndex = document.getElementById(this.selector);
 
         // If is set by index
-        if(properties.type == "byIndex")
-        {
-            selectorIndex.selectedIndex = properties.value; 
+        if (properties.type == "byIndex") {
+            selectorIndex.selectedIndex = properties.value;
 
             // Trigger onchange function
             if (selectorIndex.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
             document.getElementById("main_" + this.randomID).innerHTML = selectorIndex.options[selectorIndex.selectedIndex].text + "<i id='arrow_" + this.randomID + "' class='arrows_bv arrow down'></i>";
 
-        // if is set by value
-        } else if(properties.type == "byValue")
-        {
+            // if is set by value
+        } else if (properties.type == "byValue") {
             for (var i = 0; i < selectorIndex.length; i++) {
 
-                 if(selectorIndex[i].value == properties.value)
-                 {
-                    selectorIndex.selectedIndex = selectorIndex[i].index; 
+                if (selectorIndex[i].value == properties.value) {
+                    selectorIndex.selectedIndex = selectorIndex[i].index;
 
                     // Trigger onchange function
                     if (selectorIndex.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
                     document.getElementById("main_" + this.randomID).innerHTML = selectorIndex[i].innerText + "<i id='arrow_" + this.randomID + "' class='arrows_bv arrow down'></i>";
-                 }
+                }
             }
         }
     }
     // Append/Prepend Option
     AppendOption(properties) {
-        
+
         console.log(properties);
 
         // Get position e check if position is undefined.
         var position = properties.position;
-        if(position == undefined) { var position = "beforeend"; }
+        if (position == undefined) { var position = "beforeend"; }
 
-        if(properties.options && typeof(properties.options) === 'object')
-        {
+        if (properties.options && typeof (properties.options) === 'object') {
             // Loop object and add new options to original select box
             var prop = Object.keys(properties.options).length;
             for (var i = 0; i < prop; i++) {
 
                 var change_disabled, change_separator, change_img, change_icon;
 
-                if(properties.options[i].disabled == true){ change_disabled = "disabled"; } else { change_disabled = ""; }
-                if(properties.options[i].separator == true){ change_separator = "data-separator='true'"; } else { change_separator = ""; }
-                if(properties.options[i].img){ change_img = "data-img='"+properties.options[i].img+"'"; } else { change_img = ""; }
-                if(properties.options[i].icon){ change_icon = "data-icon='"+properties.options[i].icon+"'"; } else { change_icon = ""; }
+                if (properties.options[i].disabled == true) { change_disabled = "disabled"; } else { change_disabled = ""; }
+                if (properties.options[i].separator == true) { change_separator = "data-separator='true'"; } else { change_separator = ""; }
+                if (properties.options[i].img) { change_img = "data-img='" + properties.options[i].img + "'"; } else { change_img = ""; }
+                if (properties.options[i].icon) { change_icon = "data-icon='" + properties.options[i].icon + "'"; } else { change_icon = ""; }
 
-                document.getElementById(this.selector).insertAdjacentHTML(position, "<option "+change_img+" "+change_icon+" "+change_separator+" "+change_disabled+" value="+properties.options[i].value+" >"+properties.options[i].inner_text+"</option>");
+                document.getElementById(this.selector).insertAdjacentHTML(position, "<option " + change_img + " " + change_icon + " " + change_separator + " " + change_disabled + " value=" + properties.options[i].value + " >" + properties.options[i].inner_text + "</option>");
             }
 
         } else {
             console.error("Options must be and Object. Read documentation.");
         }
-    } 
+    }
 }

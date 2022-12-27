@@ -110,22 +110,23 @@
               Portal access
             </h1>
             <div class="access-form">
-              <form>
+              <form action="#" id="login-form">
                 <h4 class="fm-title el-caption--weight_bold">Customer Log in</h4>
                 <div class="input-inside">
                   <label for="email">
                     Email
                   </label>
-                  <input type="email" name="email" id="email" emailrfc="" required="" autocomplete="email"
-                    placeholder="Enter email" class="input-design">
+                  <input type="text" name="email" id="email" placeholder="Enter email" class="input-design">
+                  <p class="field-message"></p>
                 </div>
                 <div class="input-inside">
 
                   <label for="email">
                     Password
                   </label>
-                  <input minlength="6" type="password" name="password" required="" autocomplete="current-password"
-                    placeholder="Enter password" class="input-design">
+                  <input type="password" name="password" id="password" placeholder="Enter password"
+                    class="input-design">
+                  <p class="field-message"></p>
 
                 </div>
                 <button type="submit" class="btn--header login-btn">Log
@@ -250,6 +251,46 @@
       </footer>
     </div>
     <!-- All Js Here  -->
+    <script>
+      // Script for login form validation
+      const form = document.getElementById('login-form');
+      const email = document.getElementById('email')
+      const password = document.getElementById('password')
+
+      function showError(field, message) {
+        const formDiv = field.parentElement;
+        formDiv.className = 'input-inside error';
+        formDiv.querySelector('.field-message').innerText = message;
+      }
+
+      function showSuccess(field) {
+        field.parentElement.className = 'input-inside success'
+        field.parentElement.querySelector('.field-message').innerText = '';
+      }
+
+      const isValidEmail = (email) => {
+        return /(^\w.*@\w+\.\w)/.test(email.value)
+      };
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        console.log('form submitted')
+        if (email.value.trim() == '') {
+          showError(email, 'Email field is empty!')
+        } else if (!isValidEmail(email)) {
+          showError(email, 'Email is not valid!')
+        } else {
+          showSuccess(email);
+        }
+        if (password.value.trim() == '') {
+          showError(password, 'Password field is empty!')
+        } else if (password.value.trim().length < 6) {
+          showError(password, 'At least 6 digit')
+        } else {
+          showSuccess(password);
+        }
+      })
+
+    </script>
     <script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 

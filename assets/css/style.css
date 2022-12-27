@@ -506,10 +506,6 @@ summary {
   width: 100%
 }
 
-#app img {
-  max-width: 100%
-}
-
 .hide_label label {
   display: none
 }
@@ -1461,6 +1457,10 @@ li {
   transition: .5s
 }
 
+.fixed .un-little_menu {
+  top: 54px;
+}
+
 .un-header_menu_hover {
   cursor: pointer
 }
@@ -1482,6 +1482,8 @@ li {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg)
 }
+
+
 
 .un-header_menu_hover-little:hover {
   cursor: pointer
@@ -33846,6 +33848,25 @@ textarea::-moz-placeholder {
   margin-bottom: 22px;
 }
 
+.selection-wrap select {
+  width: 100%;
+  background-color: #EBECF0;
+  border: 0;
+  height: 65px;
+  border-radius: 4px;
+}
+
+.field-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.input-inside.error input {
+  border-color: red;
+}
+
 .fm-title {
   text-align: center;
   color: #1f323f;
@@ -33882,9 +33903,7 @@ textarea::-moz-placeholder {
 }
 
 .type-2 .access-form {
-  max-width: 940px;
-  background: transparent;
-  padding: 0;
+  max-width: 980px;
 }
 
 .twin-field {
@@ -33907,6 +33926,61 @@ textarea.input-design {
   height: 65px;
   border-radius: 4px;
 }
+
+/* checkbox css start */
+.check_box {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #939da3;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* Hide the browser's default checkbox */
+.check_box input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  border: 1px solid rgb(54, 64, 245);
+  border-radius: 4px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check_box input:checked~.checkmark {
+  background-color: rgb(54, 64, 245);
+}
+
+/* checkbox css end */
+.el-button--config_anima {
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.el-button--config_style-yell {
+  background: #3640f5;
+  padding: 0 10px;
+  color: #fff;
+}
+
 
 @media only screen and (max-width: 1024px) {
   .single-member .img {
@@ -33935,5 +34009,13 @@ textarea.input-design {
 
   header .g-container--space_md-till-md {
     --grid-cell-space-half: 0;
+  }
+
+  header .logo_header {
+    margin-left: 15px;
+  }
+
+  #mechanism_step button {
+    font-size: 18px;
   }
 }

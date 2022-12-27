@@ -22,6 +22,7 @@ Developed by: Bruno Vieira
 	align-items: center;
 	color: rgba(30, 49, 62, 0.329);
 	box-sizing: border-box;
+	font: inherit;
 }
 
 .bv_disabled {
@@ -53,7 +54,7 @@ Developed by: Bruno Vieira
 .up {
 	transform: rotate(-135deg);
 	-webkit-transform: rotate(-135deg);
-	margin-top: 5px;
+	margin-top: 4px;
 	transition: all .2s ease
 }
 
@@ -61,7 +62,7 @@ Developed by: Bruno Vieira
 	transition: all .2s ease;
 	transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
-	margin-top: 2px
+	margin-top: 0px;
 }
 
 .bv_ul_mobile {
@@ -170,4 +171,35 @@ Developed by: Bruno Vieira
 
 *:focus {
 	outline: none !important;
+}
+
+.bg-white .bv_atual {
+	border: 1px solid #1f323f8c;
+	color: rgb(43, 45, 51);
+	background-color: transparent;
+}
+
+#selected-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#selected-icon {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 10px;
+}
+
+.selection-wrap {
+	position: relative;
+}
+
+.active .bv_atual {
+	padding-left: 40px;
 }

@@ -79,18 +79,21 @@
                   <p class="text-f541af79479a774e32ff4a6b9253a840">Select the ERC20 token that you want to certify.
                   </p>
                   <div class="buttons-e328982eb3aa1b0797ef3f03b4d33925" style="max-width: 320px; margin: auto;">
-                    <div class="selection-wrap token" style="max-width: 320px; margin-top: 15px;">
+                    <div class="selection-wrap token bg-white" style="max-width: 320px; margin-top: 15px;">
+                      <span id="selected-icon"></span>
                       <select id="tokenSelect">
                         <option value="0">Select Token</option>
-                        <option value="1" data-img="../assets/img/usdt.svg">USDT</option>
-                        <option value="2" data-img="../assets/img/usdc.svg">USDC</option>
-                        <option value="3" data-img="../assets/img/tusd.svg">TUSD</option>
-                        <option value="4" data-img="../assets/img/dai.svg">DAI</option>
-                        <option value="5" data-img="../assets/img/pax.svg">PAX</option>
-                        <option value="6" data-img="../assets/img/eth.svg">ETH </option>
-                        <option value="7" data-img="../assets/img/wbtc.svg">WBTC</option>
+                        <option value="1" data-img="../assets/img/token-usdt.svg">USDT</option>
+                        <option value="2" data-img="../assets/img/token-usdc.svg">USDC</option>
+                        <option value="3" data-img="../assets/img/token-tusd.svg">TUSD</option>
+                        <option value="4" data-img="../assets/img/token-dai.svg">DAI</option>
+                        <option value="5" data-img="../assets/img/token-paxos.svg">PAX</option>
+                        <option value="6" data-img="../assets/img/token-eth.svg">ETH </option>
+                        <option value="7" data-img="../assets/img/token-wbtc.svg">WBTC</option>
                       </select>
                     </div>
+
+                    <div id="test"></div>
                   </div>
                 </div>
               </section>
@@ -229,8 +232,11 @@
   <script>
     // Activation for bvselect js 
     let tokenSelector = new BVSelect({
-      selector: '#tokenSelect'
+      selector: '#tokenSelect',
+      placeholder: 'Select Token'
     })
+
+
   </script>
 
 </body>

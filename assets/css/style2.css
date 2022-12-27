@@ -3440,6 +3440,10 @@ button.optionsOption-0478715e4a4903798f49b7be68d41a97 {
     width: fit-content
 }
 
+.button-cceed290ad520b8c7599440293b2e2fa {
+    width: 100%;
+}
+
 .ods-validation.-error {
     color: rgba(var(--ods-color-content-negative))
 }
@@ -3581,11 +3585,6 @@ ul>li:before {
         print-color-adjust: exact
     }
 }
-
-
-
-
-
 
 .token .bv_atual {
     height: 48px;

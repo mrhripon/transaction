@@ -66,4 +66,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
   }
 
+
+
+  // Script for Tab
+  if (document.getElementById('mechanism_step') !== null) {
+    const mechanism = document.getElementById('mechanism_step');
+    mechanism.addEventListener('click', function (event) {
+      event.preventDefault();
+      let clickedBtn = event.target.closest('[data-step]');
+      document.querySelectorAll('#mechanism_step button').forEach(each => each.classList.remove('active'))
+      clickedBtn.classList.add('active');
+      document.querySelectorAll('[data-step-content]').forEach(each => each.classList.remove('active'))
+      document.getElementById(clickedBtn.dataset.step).classList.add('active');
+    })
+
+  }
+
+
+
+
 })
